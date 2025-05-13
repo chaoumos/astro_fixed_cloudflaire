@@ -3,12 +3,20 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com', // Placeholder, will be updated by deployment process or user
+  site: 'https://astro-fixed-cloudflaire.com', // Replace with your actual domain
   base: '/', 
   integrations: [
     tailwind()
   ],
-  // Output can be 'server' for SSR or 'static' (default)
-  // output: 'server', 
-  // adapter: node({ mode: 'standalone' }), // Example for SSR with Node
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+      wrap: false
+    }
+  },
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"]
+    }
+  }
 });
